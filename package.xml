@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>pcd_sub</name>
+  <name>pcd_read</name>
   <version>0.0.0</version>
-  <description>The pcd_sub package</description>
+  <description>The pcd_read package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
@@ -19,7 +19,7 @@
   <!-- Url tags are optional, but mutiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/pcd_sub</url> -->
+  <!-- <url type="website">http://wiki.ros.org/pcd_read</url> -->
 
 
   <!-- Author tags are optional, mutiple are allowed, one per tag -->

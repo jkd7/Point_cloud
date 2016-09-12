@@ -1,9 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(pcd_sub)
+project(pcd_read)
 
-## Find catkin macros and libraries
-## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
-## is used, also find other catkin packages
+find_package(PCL 1.2 REQUIRED)
+
 find_package(catkin REQUIRED COMPONENTS
   pcl_ros
   roscpp
@@ -11,15 +10,22 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
+
+
+
 include_directories(include ${catkin_INCLUDE_DIRS})
 include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
-add_executable (pcd_sub pcd_sub.cpp)
+add_executable (pcd_pub pcd_pub.cpp)
+target_link_libraries (pcd_pub ${PCL_LIBRARIES})
+target_link_libraries (pcd_pub ${catkin_LIBRARIES})
 
-target_link_libraries (pcd_sub ${PCL_LIBRARIES})
-target_link_libraries (pcd_sub ${catkin_LIBRARIES})
+
+## Find catkin macros and libraries
+## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
+## is used, also find other catkin packages
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -112,8 +118,8 @@ target_link_libraries (pcd_sub ${catkin_LIBRARIES})
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES pcd_sub
-#  CATKIN_DEPENDS pcl_ros roscpp rospy std_msgs
+#  LIBRARIES pcd_read
+#  CATKIN_DEPENDS pcl roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
 
@@ -129,24 +135,24 @@ include_directories(
 )
 
 ## Declare a C++ library
-# add_library(pcd_sub
-#   src/${PROJECT_NAME}/pcd_sub.cpp
+# add_library(pcd_read
+#   src/${PROJECT_NAME}/pcd_read.cpp
 # )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(pcd_sub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(pcd_read ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(pcd_sub_node src/pcd_sub_node.cpp)
+# add_executable(pcd_read_node src/pcd_read_node.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(pcd_sub_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(pcd_read_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(pcd_sub_node
+# target_link_libraries(pcd_read_node
 #   ${catkin_LIBRARIES}
 # )
 
@@ -165,7 +171,7 @@ include_directories(
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS pcd_sub pcd_sub_node
+# install(TARGETS pcd_read pcd_read_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -190,7 +196,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_pcd_sub.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_pcd_read.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
